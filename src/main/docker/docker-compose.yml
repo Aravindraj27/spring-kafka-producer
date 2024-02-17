@@ -9,8 +9,7 @@ services:
     container_name: producer
     depends_on:
       - database
-#      - broker
-#      - zookeeper
+      - broker
     env_file: .env
     ports:
       - "8080:8080"
@@ -19,6 +18,9 @@ services:
       - SPRING_DATASOURCE_USERNAME=${POSTGRESDB_USER}
       - SPRING_DATASOURCE_PASSWORD=${POSTGRESDB_ROOT_PASSWORD}
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - spring.kafka.producer.bootstrap-servers=broker:9092
+      - spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
+      - spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
     volumes:
       - .m2:/root/.m2
     tty: true
@@ -46,7 +48,7 @@ services:
         "2181:2181"
 
   broker:
-    image: confluentinc/cp-enterprise-kafka:latest
+    image: confluentinc/cp-kafka:latest
     hostname: broker
     container_name: broker
     depends_on:
@@ -63,4 +65,13 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_LISTENERS: INTERNAL://:9092,EXTERNAL_SAME_HOST://:29092,EXTERNAL_DIFFERENT_HOST://:29093
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: broker:9092
+      CONFLUENT_METRICS_REPORTER_ZOOKEEPER_CONNECT: zookeeper:2181
+      CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 1
+      CONFLUENT_METRICS_ENABLE: 'true'
+      CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
+#      GROUP_ID: "group-event-1"
+#      KAFKA_CREATE_TOPICS: "topic-event-1"
+      KAFKA_ADVERTISED_HOST_NAME: broker
     restart: unless-stopped
