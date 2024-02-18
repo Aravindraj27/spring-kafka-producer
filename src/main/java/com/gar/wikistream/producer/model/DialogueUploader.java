@@ -1,10 +1,13 @@
-package com.gar.wikistream.producer.entity;
+package com.gar.wikistream.producer.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SourceType;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -30,9 +33,11 @@ public class DialogueUploader {
     private String uploadStatus;
 
     @Column(name = "CREATED_AT")
+    @CreationTimestamp(source = SourceType.DB)
     private Instant createdAt;
 
     @Column(name = "UPDATED_AT")
+    @UpdateTimestamp(source = SourceType.DB)
     private Instant updatedAt;
 
     @Column(name = "UPDATED_BY")
