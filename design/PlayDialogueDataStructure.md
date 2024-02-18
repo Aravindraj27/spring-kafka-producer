@@ -11,18 +11,21 @@ This structure is subject to change to improve performance for streaming the dia
   "dialogues": [
     {
       "id" : 1,
+      "actNumber": 1,
       "speaker" : "The King",
       "tone" : "gallant",
       "dialogue" : "My Royal subjects the demon army has risen"
     },
     {
       "id" : 2,
+      "actNumber": 1,
       "speaker" : "Everyone in the room",
       "tone" : "shocked",
       "dialogue" : "gasps"
     },
     {
       "id" : 1,
+      "actNumber": 1,
       "speaker" : "The King",
       "tone" : "gallant",
       "dialogue" : "Do not fret we have the heroes here to guide us through the battle"
@@ -37,6 +40,7 @@ This structure is subject to change to improve performance for streaming the dia
 ``charactersInTheScene`` : This sets the characters in scene.\
 ``dialogues`` : This is the list of all dialogues that are in the scene/act.\
 ``dialogues.id`` : gives the sequence in which the dialogues are spoken.\
+``dialogues.actNumber`` :  The act number that the dialogues belong to mapping between play and dialogues.\
 ``dialogues.speaker`` :  The person who says the dialogue.\
 ``dialogues.tone`` : Sets the tone of the dialogue spoken.\
 ``dialogues.dialogue`` : the actual dialogue spoken.
