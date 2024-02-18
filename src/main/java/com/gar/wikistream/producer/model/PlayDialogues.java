@@ -1,19 +1,18 @@
 package com.gar.wikistream.producer.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document
+@Document(collection = "PlayDialogues")
 @Getter
 @Setter
 @AllArgsConstructor
 @ToString
+@NoArgsConstructor
+@Data
 public class PlayDialogues {
 
     @Id
@@ -23,6 +22,6 @@ public class PlayDialogues {
     private int actNumber;
     private String sceneSetting;
     private List<String> charactersInScene;
-    private List<Dialogues> dialoguesList;
+//    private List<Dialogues> dialoguesList;
 
 }
