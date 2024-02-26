@@ -36,12 +36,11 @@ public class PlayDetailsBootStrap implements CommandLineRunner {
 
         Dialogues dialogues = new Dialogues();
         dialogues.setPlayId(playDialogues.getId());
-        dialogues.setId(UUID.randomUUID().toString());
+        dialogues.setSequence(1);
         dialogues.setTone("harsh");
         dialogues.setSpeaker("Me");
         dialogues.setDialogue("My dialogue");
         log.info("Inserting dialogue for play {}", playDialoguesRepository.findById(dialogues.getPlayId()).get().getPlayName());
         dialoguesRepository.save(dialogues);
-
     }
 }
