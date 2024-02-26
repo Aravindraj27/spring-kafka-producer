@@ -23,6 +23,12 @@ public class ProducerController {
         return ResponseEntity.ok("Publishing to topic has started");
     }
 
+
+    @GetMapping("/health")
+    public ResponseEntity<String> healthCheck() {
+        return ResponseEntity.ok("Server is UP");
+    }
+
     @PostMapping("/metadata/publish")
     public ResponseEntity<String> publishPlayMetadata(@RequestBody DialogueMetaDataDTO metaDataDTO) {
         producer.publishPlayMetadatMessage(metaDataDTO);

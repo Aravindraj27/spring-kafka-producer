@@ -22,6 +22,5 @@ public class PlayDialogues {
     private int actNumber;
     private String sceneSetting;
     private List<String> charactersInScene;
-//    private List<Dialogues> dialoguesList;
 
 }
