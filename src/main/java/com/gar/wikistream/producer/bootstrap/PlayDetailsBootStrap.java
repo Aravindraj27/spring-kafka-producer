@@ -35,6 +35,7 @@ public class PlayDetailsBootStrap implements CommandLineRunner {
         playDialoguesRepository.save(playDialogues);
 
         Dialogues dialogues = new Dialogues();
+        dialogues.setDialogueId(playDialogues.getId().concat(String.format("%04d", 1)));
         dialogues.setPlayId(playDialogues.getId());
         dialogues.setSequence(1);
         dialogues.setTone("harsh");

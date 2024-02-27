@@ -8,11 +8,16 @@ import java.util.UUID;
 
 public class PlayIdGeneratorUtils {
     public static String generateNamedUUID(String playName, String author) {
-        UUID uuid = PlayIdGeneratorUtils.generateType5UUID(playName, author);
-        return uuid.toString();
+        String uniquePlayName = playName.concat(author);
+        String playId = UUID.nameUUIDFromBytes(uniquePlayName.getBytes()).toString();
+        return playId;
     }
 
+    /*
+    Unned to add a SHA 1 Implementation for UUID for less collision Will be added in the back log.
+     */
 
+    /*
     public static UUID generateType5UUID(String playName, String author) {
 
         final byte[] nameSpaceBytes = bytesFromUUID(playName);
@@ -61,10 +66,10 @@ public class PlayIdGeneratorUtils {
             throw new InternalError("SHA-1 not supported", exception);
         }
         final byte[] bytes = Arrays.copyOfRange(md.digest(name), 0, 16);
-        bytes[6] &= 0x0f; /* clear version        */
-        bytes[6] |= 0x50; /* set to version 5     */
-        bytes[8] &= 0x3f; /* clear variant        */
-        bytes[8] |= 0x80; /* set to IETF variant  */
+        bytes[6] &= 0x0f; /* clear version
+        bytes[6] |= 0x50; /* set to version 5
+        bytes[8] &= 0x3f; /* clear variant
+        bytes[8] |= 0x80; /* set to IETF variant
         return constructType5UUID(bytes);
     }
 
@@ -82,4 +87,5 @@ public class PlayIdGeneratorUtils {
         }
         return new UUID(msb, lsb);
     }
+    */
 }
