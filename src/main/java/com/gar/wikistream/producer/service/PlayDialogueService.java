@@ -33,8 +33,14 @@ public class PlayDialogueService {
         playDialogues.setActNumber(playDialogueRequest.getActNumber());
         playDialogues.setCharactersInScene(playDialogueRequest.getCharactersInScene());
         playDialogues.setActNumber(playDialogueRequest.getActNumber());
+        playDialoguesRepository.save(playDialogues);
         List<Dialogues> dialoguesList = playDialogueRequest.getDialogues();
-        return "data to be written";
+        dialoguesList.forEach(dialogues -> dialogues.setPlayId(playId));
+        for (Dialogues dialogue : dialoguesList) {
+            dialogue.setDialogueId(playId.concat(String.format("%04d", dialogue.getSequence())));
+            dialoguesRepository.save(dialogue);
+        }
+        return "All records saved successfully";
     }
 
 }
