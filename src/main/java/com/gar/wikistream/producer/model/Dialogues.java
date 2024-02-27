@@ -13,6 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 public class Dialogues {
     @Id
+    private String dialogueId;
     private int sequence;
     private String playId;
     private String speaker;
