@@ -10,22 +10,19 @@ This structure is subject to change to improve performance for streaming the dia
   "charactersInScene" : "The King, THe Summoned heroes, The ministers and the Scouts",
   "dialogues": [
     {
-      "id" : 1,
-      "actNumber": 1,
+      "sequence" : 1,
       "speaker" : "The King",
       "tone" : "gallant",
       "dialogue" : "My Royal subjects the demon army has risen"
     },
     {
-      "id" : 2,
-      "actNumber": 1,
+      "sequence" : 2,
       "speaker" : "Everyone in the room",
       "tone" : "shocked",
       "dialogue" : "gasps"
     },
     {
-      "id" : 1,
-      "actNumber": 1,
+      "sequence" : 3,
       "speaker" : "The King",
       "tone" : "gallant",
       "dialogue" : "Do not fret we have the heroes here to guide us through the battle"
